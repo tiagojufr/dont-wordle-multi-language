@@ -14,14 +14,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v6
 
-      - name: Setup Node
-        uses: actions/setup-node@v6
+      - name: Setup pnpm and node
+        uses: pnpm/setup@v1
         with:
-          node-version: 24
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm i
+          version: 11
+          runtime: node@24
+          cache: true
 
       - name: Build project and run checks
         run: pnpm run check

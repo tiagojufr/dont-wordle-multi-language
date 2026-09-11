@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="app.documentTitle">app.documentTitle</title>
+    <link rel="icon" type="image/svg+xml" href="/img/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/index-DpICD4Y_.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-8YEDb-v3.css">
+  </head>
+
+  <body>
+    <div class="bg-shape bg-shape-a" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-b" aria-hidden="true"></div>
+
+    <main class="app">
+      <header class="topbar">
+        <h1 class="topbar-title">
+          <span data-i18n="app.titleMain">app.titleMain</span>
+          <span data-i18n="app.titleSub">app.titleSub</span>
+        </h1>
+        <section
+          class="stats"
+          aria-label="aria.stats"
+          data-i18n-attr="aria-label:aria.stats"
+        >
+          <article class="stat-item">
+            <span class="stat-label" data-i18n="labels.validWords"
+              >labels.validWords</span
+            >
+            <span class="stat-value" id="remainingCount">6089</span>
+          </article>
+          <article class="stat-item">
+            <span class="stat-label" data-i18n="labels.undos"
+              >labels.undos</span
+            >
+            <span class="stat-value" id="undosRemaining">5</span>
+          </article>
+        </section>
+        <div class="topbar-actions">
+          <button
+            class="icon-button"
+            type="button"
+            id="helpButton"
+            aria-label="buttons.help"
+            title="buttons.help"
+            data-i18n-attr="aria-label:buttons.help|title:buttons.help"
+          >
+            ?
+          </button>
+          <div class="language-switcher" id="languageSwitcher">
+            <button
+              type="button"
+              class="icon-button language-switcher-trigger"
+              id="languageSwitcherTrigger"
+              aria-label="Language"
+              title="Language"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img
+                class="language-flag"
+                id="languageSwitcherFlag"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='3' height='2' fill='transparent'/%3E%3C/svg%3E"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="language-code" id="languageSwitcherCode">--</span>
+            </button>
+            <ul
+              class="language-switcher-panel"
+              id="languageSwitcherPanel"
+              hidden
+            ></ul>
+          </div>
+          <button
+            class="icon-button theme-toggle-button"
+            type="button"
+            id="themeToggleButton"
+            aria-label="theme.useDark"
+            title="theme.useDark"
+            data-i18n-attr="aria-label:theme.useDark|title:theme.useDark"
+          ></button>
+          <button
+            class="icon-button gitHub-button"
+            type="button"
+            id="gitHubButton"
+            aria-label="GitHub"
+            title="GitHub"
+          ></button>
+        </div>
+      </header>
+
+      <div class="content">
+        <section
+          class="play-area"
+          aria-label="aria.playArea"
+          data-i18n-attr="aria-label:aria.playArea"
+        >
+          <div class="board-controls">
+            <button
+              type="button"
+              class="start-button"
+              id="randomStartButton"
+              disabled
+              data-i18n="buttons.randomWord"
+            >
+              buttons.randomWord
+            </button>
+            <button
+              type="button"
+              class="ghost-button"
+              id="newGameButton"
+              disabled
+              data-i18n="buttons.newGame"
+            >
+              buttons.newGame
+            </button>
+            <button
+              type="button"
+              class="ghost-button"
+              id="undoButton"
+              data-i18n="buttons.undo"
+            >
+              buttons.undo
+            </button>
+          </div>
+          <output
+            class="status-text status-info"
+            id="statusText"
+            aria-live="polite"
+          ></output>
+          <div class="board-section">
+            <section
+              class="board"
+              id="board"
+              aria-label="aria.board"
+              data-i18n-attr="aria-label:aria.board"
+            ></section>
+          </div>
+        </section>
+
+        <section
+          class="keyboard"
+          aria-label="aria.keyboard"
+          data-i18n-attr="aria-label:aria.keyboard"
+          id="keyboard"
+        ></section>
+      </div>
+
+      <dialog
+        class="help-modal"
+        id="helpModal"
+        aria-labelledby="helpModalTitle"
+      >
+        <header class="help-modal-header">
+          <h2 id="helpModalTitle" data-i18n="help.title">help.title</h2>
+          <button
+            class="modal-close-button"
+            type="button"
+            id="helpModalCloseButton"
+            aria-label="help.close"
+            title="help.close"
+            data-i18n-attr="aria-label:help.close|title:help.close"
+          >
+            ×
+          </button>
+        </header>
+
+        <div class="help-modal-body">
+          <div>
+            <p data-i18n="help.introLine">help.introLine</p>
+            <ul>
+              <li data-i18n="help.rules.pickWord">help.rules.pickWord</li>
+              <li data-i18n="help.rules.avoidWord">help.rules.avoidWord</li>
+              <li data-i18n="help.rules.feedback">help.rules.feedback</li>
+            </ul>
+          </div>
+
+          <div
+            class="help-examples"
+            aria-label="help.examples.aria"
+            data-i18n-attr="aria-label:help.examples.aria"
+          >
+            <p data-i18n="help.examples.title">help.examples.title</p>
+            <article class="help-example">
+              <div class="help-example-tiles" aria-hidden="true">
+                <span class="tile miss">C</span>
+                <span class="tile warn">R</span>
+                <span class="tile miss">O</span>
+                <span class="tile miss">W</span>
+                <span class="tile hit">S</span>
+              </div>
+
+              <div class="help-example-tiles" aria-hidden="true">
+                <span class="tile hit">R</span>
+                <span class="tile warn">E</span>
+                <span class="tile warn">A</span>
+                <span class="tile miss">D</span>
+                <span class="tile hit">S</span>
+              </div>
+
+              <div class="help-example-tiles" aria-hidden="true">
+                <span class="tile hit">R</span>
+                <span class="tile hit">A</span>
+                <span class="tile hit">V</span>
+                <span class="tile hit">E</span>
+                <span class="tile hit">S</span>
+              </div>
+            </article>
+          </div>
+
+          <div>
+            <p data-i18n="help.colors.title">help.colors.title</p>
+            <ul>
+              <li>
+                <strong class="miss" data-i18n="help.colors.miss.label"
+                  >help.colors.miss.label</strong
+                >: <span data-i18n="help.colors.miss.description"></span>
+              </li>
+              <li>
+                <strong class="warn" data-i18n="help.colors.warn.label"
+                  >help.colors.warn.label</strong
+                >: <span data-i18n="help.colors.warn.description"></span>
+              </li>
+              <li>
+                <strong class="hit" data-i18n="help.colors.hit.label"
+                  >help.colors.hit.label</strong
+                >:
+                <span data-i18n="help.colors.hit.description"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </dialog>
+    </main>
+
+  </body>
+</html>

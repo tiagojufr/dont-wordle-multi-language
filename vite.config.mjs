@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  base: "/dont-wordle-multi-language/",
   server: {
     host: "localhost",
     port: 3000,

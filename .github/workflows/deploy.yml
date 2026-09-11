@@ -20,6 +20,9 @@ jobs:
           runtime: node@24
           cache: true
 
+      - name: Setup playwright
+        run: pnpm exec playwright install
+
       - name: Build project and run checks
         run: pnpm run check
 

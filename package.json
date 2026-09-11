@@ -1,0 +1,37 @@
+{
+  "name": "dont-wordle-multi-language",
+  "description": "A multi-language version of Don't Wordle",
+  "keywords": [
+    "don't",
+    "wordle",
+    "multilanguage",
+    "multi-language"
+  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Tiago Neves",
+    "url": "https://github.com/tiagojufr"
+  },
+  "packageManager": "pnpm@11.26.0+sha512.fc0e2bf890b9f983611f1ab68c0637bce914390653699f83c1a78b005ed25f2c81e77920c8fd8eee2ecf0b58b28cdcb00a84d97f69bcf7c56b2f344710238664",
+  "scripts": {
+    "build": "vite build",
+    "check": "pnpm run format:check && pnpm run build && pnpm run test",
+    "dev": "vite",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "preview": "vite preview",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "prettier": "^3.9.6",
+    "vite": "^8.2.2"
+  },
+  "dependencies": {
+    "country-flag-icons": "^1.6.20",
+    "i18next": "^26.4.2"
+  }
+}

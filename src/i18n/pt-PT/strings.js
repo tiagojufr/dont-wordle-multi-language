@@ -1,0 +1,87 @@
+export default {
+  app: {
+    documentTitle: "Don't Wordle Multi-language",
+    titleMain: "Don't Wordle",
+    titleSub: "Multi-language",
+  },
+  labels: {
+    validWords: "Palavras Válidas",
+    undos: "Undos",
+  },
+  aria: {
+    stats: "Estatísticas do jogo",
+    playArea: "Área de jogo",
+    board: "Tabuleiro de tentativas",
+    keyboard: "Teclado virtual",
+  },
+  buttons: {
+    randomWord: "Palavra aleatória",
+    newGame: "Novo jogo",
+    undo: "Undo",
+    help: "Ajuda",
+  },
+  help: {
+    title: "Como jogar",
+    close: "Fechar ajuda",
+    introLine: "O Don't Wordle é como o Wordle, mas ao contrário:",
+    rules: {
+      pickWord: "O jogo escolhe uma palavra aleatória",
+      avoidWord: "O teu objetivo é evitá-la em 6 tentativas",
+      feedback:
+        "Cada jogada válida reduz o conjunto de palavras possíveis e as cores das letras mostram a relação da tua tentativa com a palavra alvo",
+    },
+    examples: {
+      aria: "Exemplo de jogo com três jogadas",
+      title: "Exemplo de 3 jogadas seguidas:",
+    },
+    colors: {
+      title: "Explicação das cores das letras e respetivas regras:",
+      miss: {
+        label: "Cinza",
+        description:
+          "a letra não existe na palavra secreta. Não a podes usar mais",
+      },
+      warn: {
+        label: "Amarelo",
+        description:
+          "a letra existe na palavra secreta, mas está na posição errada. Tens que a usar noutra posição na próxima jogada",
+      },
+      hit: {
+        label: "Verde",
+        description:
+          "a letra está na posição certa. Tens que a manter na mesma posição até ao fim",
+      },
+    },
+  },
+  theme: {
+    useDark: "Usar tema escuro",
+    useLight: "Usar tema claro",
+  },
+  language: {
+    picker: "Idioma",
+  },
+  ui: {
+    dismissWarning: "Fechar aviso",
+  },
+  errors: {
+    shortWord: "A palavra tem que ter 5 letras.",
+    dictionaryWordMissing: 'A palavra "{{word}}" não existe no dicionário.',
+    repeatedLettersHint:
+      "A contagem de letras repetidas não respeita as pistas.",
+    noUndoMove: "Não há jogada para desfazer.",
+    noUndosLeft: "Sem undos restantes.",
+    dictionaryNotLoaded: "Dicionário ainda não carregado.",
+    dictionaryLoadFailed: "Não foi possível carregar o dicionário.",
+    mustStay: "A letra {{letter}} tem que ficar na posição {{position}}.",
+    cannotStay: "{{letter}} não pode ficar na posição {{position}}.",
+    mustExistElsewhere: "A letra {{letter}} tem que existir noutra posição.",
+    eliminatedLetter:
+      "A letra {{letter}} já foi eliminada e não pode ser usada.",
+  },
+  status: {
+    loseDirect: 'Perdeste: a palavra era "{{word}}".',
+    loseCandidates:
+      'Perdeste: restam {{count}} palavras válidas para {{attempts}} tentativas. A palavra era "{{word}}".',
+    win: 'Parabéns! Evitaste a palavra secreta "{{word}}" em 6 tentativas.',
+  },
+};

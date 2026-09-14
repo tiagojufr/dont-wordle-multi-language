@@ -128,12 +128,6 @@ CI runs `pnpm run check` (formatting, build, and tests) on every push — see [.
 
 This project was mostly vibe-coded, but contributions are welcome! Whether it's a bug fix, a new feature, a new language, or an improvement to the docs, you're welcome to contribute!
 
-## Roadmap
-
-Here are the next things I intend to work on:
-
-- :bug: - Keyboard buttons are too small for cellphones (tested with a Nothing Phone 2)
-
 ### Reporting bugs / requesting features
 
 Please use [GitHub Issues](https://github.com/tiagojufr/dont-wordle-multi-language/issues) and include:
@@ -142,6 +136,12 @@ Please use [GitHub Issues](https://github.com/tiagojufr/dont-wordle-multi-langua
 - Expected vs. actual behavior
 - Browser/OS, if relevant
 - Screenshots, if helpful
+
+## Roadmap
+
+Here are the next things I intend to work on:
+
+- :bug: - Keyboard buttons are too small for cellphones (tested with a Nothing Phone 2)
 
 ## License
 

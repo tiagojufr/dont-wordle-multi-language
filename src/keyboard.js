@@ -2,19 +2,21 @@ import { canonicalLetter } from "./game-logic.js";
 
 const defaultKeyRows = [
   ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
-  ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-  ["backspace", "z", "x", "c", "v", "b", "n", "m", "enter"],
+  ["a", "s", "d", "f", "g", "h", "j", "k", "l", "backspace"],
+  ["z", "x", "c", "v", "b", "n", "m", "enter"],
 ];
 
 let currentLetterPattern = /^[a-z]$/;
 let keyboardBound = false;
+let virtualKeyboardBound = false;
+let virtualKeyboardInputHandler = null;
 
 function keyLabel(key) {
   if (key === "backspace") {
-    return "←";
+    return "\u2794";
   }
   if (key === "enter") {
-    return "✓";
+    return "\u21A9";
   }
   return key;
 }
@@ -47,6 +49,8 @@ export function renderKeyboard(onKeyInput, keyRows = defaultKeyRows) {
     return;
   }
 
+  virtualKeyboardInputHandler = onKeyInput;
+
   keyboard.innerHTML = "";
 
   keyRows.forEach((row) => {
@@ -78,6 +82,12 @@ export function renderKeyboard(onKeyInput, keyRows = defaultKeyRows) {
     keyboard.appendChild(rowEl);
   });
 
+  if (virtualKeyboardBound) {
+    return;
+  }
+
+  virtualKeyboardBound = true;
+
   keyboard.addEventListener("click", (event) => {
     const target = event.target;
     if (!(target instanceof HTMLElement)) {
@@ -90,11 +100,11 @@ export function renderKeyboard(onKeyInput, keyRows = defaultKeyRows) {
     }
 
     const key = button.dataset.key;
-    if (!key) {
+    if (!key || typeof virtualKeyboardInputHandler !== "function") {
       return;
     }
 
-    onKeyInput(key);
+    virtualKeyboardInputHandler(key);
   });
 }
 

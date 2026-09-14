@@ -8,8 +8,8 @@ export const config = {
   flagSvg: flagUsSvg,
   keyboardRows: [
     ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
-    ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-    ["backspace", "z", "x", "c", "v", "b", "n", "m", "enter"],
+    ["a", "s", "d", "f", "g", "h", "j", "k", "l", "backspace"],
+    ["z", "x", "c", "v", "b", "n", "m", "enter"],
   ],
   letterPattern: /^[a-z]$/,
   foldMap: {},

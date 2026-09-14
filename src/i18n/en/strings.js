@@ -1,9 +1,4 @@
 export default {
-  app: {
-    documentTitle: "Don't Wordle Multi-language",
-    titleMain: "Don't Wordle",
-    titleSub: "Multi-language",
-  },
   labels: {
     validWords: "Valid Words",
     undos: "Undos",
@@ -25,10 +20,10 @@ export default {
     close: "Close help",
     introLine: "Don't Wordle is like Wordle, but with a twist:",
     rules: {
-      pickWord: "The game picks a random word",
+      pickWord: "The game picks a random secret word",
       avoidWord: "Your goal is to avoid it in 6 attempts",
       feedback:
-        "Each valid guess reduces the set of possible words and tile colors show how your guess relates to the target word",
+        "Each valid guess reduces the set of possible words and tile colors show how your guess relates to the secret word",
     },
     examples: {
       aria: "Example with three turns",
@@ -77,9 +72,9 @@ export default {
     eliminatedLetter: "Letter {{letter}} was eliminated and cannot be used.",
   },
   status: {
-    loseDirect: 'You lost: the word was "{{word}}".',
+    loseDirect: 'You lost: the secret word was "{{word}}".',
     loseCandidates:
-      'You lost: {{count}} valid words remain for {{attempts}} attempts. The word was "{{word}}".',
+      'You lost: {{count}} valid words remain for {{attempts}} attempts. The secret word was "{{word}}".',
     win: 'You win! You avoided the secret word "{{word}}" in 6 attempts.',
   },
 };

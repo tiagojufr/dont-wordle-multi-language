@@ -1,9 +1,4 @@
 export default {
-  app: {
-    documentTitle: "Don't Wordle Multi-language",
-    titleMain: "Don't Wordle",
-    titleSub: "Multi-language",
-  },
   labels: {
     validWords: "Palavras Válidas",
     undos: "Undos",
@@ -25,10 +20,10 @@ export default {
     close: "Fechar ajuda",
     introLine: "O Don't Wordle é como o Wordle, mas ao contrário:",
     rules: {
-      pickWord: "O jogo escolhe uma palavra aleatória",
+      pickWord: "O jogo escolhe uma palavra secreta aleatoriamente",
       avoidWord: "O teu objetivo é evitá-la em 6 tentativas",
       feedback:
-        "Cada jogada válida reduz o conjunto de palavras possíveis e as cores das letras mostram a relação da tua tentativa com a palavra alvo",
+        "Cada jogada válida reduz o conjunto de palavras possíveis e as cores das letras mostram a relação da tua tentativa com a palavra secreta",
     },
     examples: {
       aria: "Exemplo de jogo com três jogadas",
@@ -79,9 +74,9 @@ export default {
       "A letra {{letter}} já foi eliminada e não pode ser usada.",
   },
   status: {
-    loseDirect: 'Perdeste: a palavra era "{{word}}".',
+    loseDirect: 'Perdeste: a palavra secreta era "{{word}}".',
     loseCandidates:
-      'Perdeste: restam {{count}} palavras válidas para {{attempts}} tentativas. A palavra era "{{word}}".',
+      'Perdeste: restam {{count}} palavras válidas para {{attempts}} tentativas. A palavra secreta era "{{word}}".',
     win: 'Parabéns! Evitaste a palavra secreta "{{word}}" em 6 tentativas.',
   },
 };

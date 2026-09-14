@@ -68,8 +68,39 @@ export function renderLanguageSwitcher({
     trigger.setAttribute("aria-expanded", "false");
   };
 
+  const updatePanelAlignment = () => {
+    panel.dataset.align = "right";
+
+    const panelRect = panel.getBoundingClientRect();
+    const triggerRect = trigger.getBoundingClientRect();
+    const viewportWidth = document.documentElement.clientWidth;
+    const panelWidth = panelRect.width;
+
+    const overflowIfLeftAligned = Math.max(
+      0,
+      triggerRect.left + panelWidth - viewportWidth,
+    );
+    const overflowIfRightAligned = Math.max(0, panelWidth - triggerRect.right);
+
+    if (overflowIfLeftAligned < overflowIfRightAligned) {
+      panel.dataset.align = "left";
+      return;
+    }
+
+    if (overflowIfRightAligned < overflowIfLeftAligned) {
+      panel.dataset.align = "right";
+      return;
+    }
+
+    panel.dataset.align =
+      triggerRect.left + triggerRect.width / 2 <= viewportWidth / 2
+        ? "left"
+        : "right";
+  };
+
   const openPanel = () => {
     panel.hidden = false;
+    updatePanelAlignment();
     trigger.setAttribute("aria-expanded", "true");
   };
 
@@ -122,6 +153,16 @@ export function renderLanguageSwitcher({
     (event) => {
       if (event.key === "Escape") {
         closePanel();
+      }
+    },
+    { signal: listenersAbortController.signal },
+  );
+
+  window.addEventListener(
+    "resize",
+    () => {
+      if (!panel.hidden) {
+        updatePanelAlignment();
       }
     },
     { signal: listenersAbortController.signal },

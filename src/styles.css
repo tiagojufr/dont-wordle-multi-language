@@ -81,8 +81,8 @@
   --badge-col-gap: 8px;
 
   /* Keyboard */
-  --key-size: 6vmin;
-  --key-gap: 5px;
+  --key-size: clamp(1.6rem, 8.2vw, 2.25rem);
+  --key-gap: clamp(2px, 0.8vw, 5px);
 }
 
 :root[data-theme="dark"] {
@@ -338,6 +338,16 @@ body {
   display: grid;
   gap: 4px;
   min-width: 140px;
+}
+
+.language-switcher-panel[data-align="left"] {
+  left: 0;
+  right: auto;
+}
+
+.language-switcher-panel[data-align="right"] {
+  right: 0;
+  left: auto;
 }
 
 .language-switcher-panel[hidden] {
@@ -763,6 +773,7 @@ body {
 .key.key-backspace {
   background: var(--key-backspace-bg);
   color: var(--key-backspace-ink);
+  rotate: 180deg;
 }
 
 .key.state-miss {
@@ -795,12 +806,17 @@ button:focus-visible {
   padding: 0;
   width: min(680px, 100%);
   max-height: min(86dvh, 760px);
-  overflow: auto;
+  overflow: hidden;
   background: var(--help-bg);
   color: var(--ink);
   border: 1px solid var(--help-border);
   border-radius: 14px;
   box-shadow: 0 16px 48px rgba(16, 31, 19, 0.24);
+}
+
+.help-modal[open] {
+  display: flex;
+  flex-direction: column;
 }
 
 .help-modal::backdrop {
@@ -812,6 +828,7 @@ button:focus-visible {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  flex-shrink: 0;
   padding: 12px 14px;
   border-bottom: 1px solid var(--help-header-border);
   background: linear-gradient(
@@ -843,6 +860,8 @@ button:focus-visible {
 }
 
 .help-modal-body {
+  min-height: 0;
+  overflow-y: auto;
   padding: clamp(12px, 3.5vw, 18px);
   display: grid;
   gap: 12px;
@@ -912,5 +931,15 @@ button:focus-visible {
 
   .stat-item {
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .keyboard {
+    padding: 8px;
+  }
+
+  .key {
+    min-height: 2.75rem;
   }
 }

@@ -91,7 +91,11 @@ tests/                      # Playwright end-to-end tests
 Adding a new language means providing a dictionary and a small configuration/translation module, then registering it. As an example, here's how you would add Spanish (`es`):
 
 1. **Add a dictionary.**
-   Create `public/dictionaries/es.txt` — a plain text file with one valid 5-letter word per line, lowercase.
+   Create `public/dictionaries/es.txt` — a plain text file with:
+   - one valid 5-letter word per line
+   - words must be lowercase
+   - file must be UTF-8 encoded
+   - **be careful with accented words**, so you don't end up with 2 words in the file that are the same word when you remove the accents (e.g. `agora` vs. `agorá`). This will introduce bugs in the game
 
 2. **Create a language folder.**
    Create `src/i18n/es/index.js`, see [src/i18n/en/index.js](src/i18n/en/index.js) as an example:

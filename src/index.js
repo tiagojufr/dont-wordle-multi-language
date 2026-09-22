@@ -371,7 +371,7 @@ function submitGuess() {
   rowRemainingCounts[activeRow] = candidatesBeforeGuess;
   logGameDebug(`guess-${activeRow + 1}`);
 
-  if (guess === targetWord) {
+  if (guess === canonicalWord(targetWord)) {
     gameStatus = "lost";
     setStatusText(
       t("status.loseDirect", { word: targetWord.toUpperCase() }),

@@ -145,7 +145,7 @@ Please use [GitHub Issues](https://github.com/tiagojufr/dont-wordle-multi-langua
 
 Here are the next things I intend to work on:
 
-- :bug: - Keyboard buttons are too small for cellphones (tested with a Nothing Phone 2)
+- :bug: - When the player finds an accented letter in the correct place, it shows the accent of the secret word instead of the correct accentuation for the current word. E.g: secret word is balão, player writes socar and its shows as socãr (which is an invalid word)
 
 ## License
 

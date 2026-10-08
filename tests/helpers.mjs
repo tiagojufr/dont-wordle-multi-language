@@ -42,7 +42,7 @@ async function mockDictionary(
 }
 
 async function waitForGameReady(page) {
-  await page.waitForSelector(".guess-line");
+  await page.locator(".guess-line").first().waitFor();
   await page.waitForFunction(() => {
     const count = document.getElementById("remainingCount")?.textContent || "";
     return /\d/.test(count);
@@ -72,5 +72,4 @@ export {
   parseCount,
   rowTiles,
   submitWord,
-  waitForGameReady,
 };

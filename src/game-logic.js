@@ -36,7 +36,7 @@ export function randomIndex(maxExclusive) {
   const maxUint32 = 0x100000000;
   const limit = maxUint32 - (maxUint32 % maxExclusive);
 
-  let value = 0;
+  let value;
   do {
     crypto.getRandomValues(randomValues);
     value = randomValues[0];
@@ -76,7 +76,7 @@ export function evaluateGuess(solution, guess) {
   return result;
 }
 
-export function patternEquals(a, b) {
+function patternEquals(a, b) {
   const colCount = a.length;
   for (let i = 0; i < colCount; i += 1) {
     if (a[i] !== b[i]) {

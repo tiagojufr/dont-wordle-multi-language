@@ -48,6 +48,7 @@ let activeCol = 0;
 
 let dictionaryWords = [];
 let dictionaryCanonicalSet = new Set();
+let dictionaryCanonicalMap = new Map();
 let targetWord = "";
 let candidateWords = [];
 let submittedGuesses = [];
@@ -282,12 +283,15 @@ function removeLetter() {
 }
 
 function markSubmittedRow(rowIndex, pattern) {
+  const guess = submittedGuesses[rowIndex];
+  const accentedGuess = dictionaryCanonicalMap.get(guess) || guess;
+
   pattern.forEach((state, colIndex) => {
     boardState[rowIndex][colIndex].state = state;
 
-    // Show the accented target letter when the tile is green.
+    // Show the guessed word's own accentuation when the tile is green.
     if (state === "hit") {
-      boardState[rowIndex][colIndex].letter = targetWord[colIndex];
+      boardState[rowIndex][colIndex].letter = accentedGuess[colIndex];
     }
   });
 }
@@ -620,6 +624,9 @@ function resolveTargetWord(words) {
 function initGame(words) {
   dictionaryWords = words;
   dictionaryCanonicalSet = new Set(words.map((word) => canonicalWord(word)));
+  dictionaryCanonicalMap = new Map(
+    words.map((word) => [canonicalWord(word), word]),
+  );
   targetWord = resolveTargetWord(words);
   candidateWords = [...words];
   submittedGuesses = [];

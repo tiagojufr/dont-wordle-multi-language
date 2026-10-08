@@ -31,7 +31,7 @@ function normalizeCode(value) {
     .toLowerCase();
 }
 
-export function resolveLanguageCode(preferredCode, languages) {
+function resolveLanguageCode(preferredCode, languages) {
   const entries = Object.entries(languages);
   const preferred = normalizeCode(preferredCode);
 
@@ -55,7 +55,7 @@ export function resolveLanguageCode(preferredCode, languages) {
   return null;
 }
 
-export function getStoredLanguage() {
+function getStoredLanguage() {
   try {
     return globalThis.localStorage?.getItem(LANGUAGE_STORAGE_KEY);
   } catch {
@@ -63,7 +63,7 @@ export function getStoredLanguage() {
   }
 }
 
-export function setStoredLanguage(code) {
+function setStoredLanguage(code) {
   try {
     globalThis.localStorage?.setItem(LANGUAGE_STORAGE_KEY, code);
   } catch {

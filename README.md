@@ -7,18 +7,6 @@ A multi-language version of **Don't Wordle** — the game plays like Wordle, but
 
 🎮 **[Play it here](https://tiagojufr.github.io/dont-wordle-multi-language/)**
 
-## Table of contents
-
-- [How to play](#how-to-play)
-- [Getting started](#getting-started)
-- [Available scripts](#available-scripts)
-- [Project structure](#project-structure)
-- [Adding a new language](#adding-a-new-language)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [Roadmap](#roadmap)
-- [License](#license)
-
 ## How to play
 
 Don't Wordle picks a random secret word. Every valid guess narrows down the set of possible words and reveals color-coded hints:
@@ -29,14 +17,27 @@ Don't Wordle picks a random secret word. Every valid guess narrows down the set 
 
 Your goal is to survive all 6 guesses **without** landing on the secret word.
 
-## Getting started
+## Reporting bugs / requesting features
 
-### Prerequisites
+Please use [GitHub Issues](https://github.com/tiagojufr/dont-wordle-multi-language/issues) and include:
+
+- Steps to reproduce (for bugs)
+- Expected vs. actual behavior
+- Browser/OS, if relevant
+- Screenshots, if helpful
+
+## Contributing
+
+This project was mostly vibe-coded, but contributions are welcome! Whether it's a bug fix, a new feature, a new language, or an improvement to the docs, you're welcome to contribute!
+
+### Getting started
+
+#### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v24 or later recommended)
 - [pnpm](https://pnpm.io/) — this project uses pnpm for all scripts and package management (see the `packageManager` field in [package.json](package.json))
 
-### Installation
+#### Installation
 
 ```bash
 git clone https://github.com/tiagojufr/dont-wordle-multi-language.git
@@ -44,7 +45,7 @@ cd dont-wordle-multi-language
 pnpm install
 ```
 
-### Running locally
+#### Running locally
 
 ```bash
 pnpm dev
@@ -52,21 +53,23 @@ pnpm dev
 
 The app will be available at [http://localhost:3000](http://localhost:3000).
 
-## Available scripts
+### Available scripts
 
-| Script              | Description                                                     |
-| ------------------- | --------------------------------------------------------------- |
-| `pnpm dev`          | Starts the Vite dev server                                      |
-| `pnpm build`        | Builds the app for production into `dist/`                      |
-| `pnpm preview`      | Serves the production build locally                             |
-| `pnpm format`       | Formats the codebase with Prettier                              |
-| `pnpm format:check` | Checks formatting without writing changes                       |
-| `pnpm test`         | Runs the Playwright end-to-end test suite                       |
-| `pnpm test:headed`  | Runs the test suite in a headed browser                         |
-| `pnpm test:ui`      | Opens the Playwright UI test runner                             |
-| `pnpm check`        | Runs format check, build, and tests — the same checks run in CI |
+| Script              | Description                                                  |
+| ------------------- | ------------------------------------------------------------ |
+| `pnpm dev`          | Starts the Vite dev server                                   |
+| `pnpm build`        | Builds the app for production into `dist/`                   |
+| `pnpm preview`      | Serves the production build locally                          |
+| `pnpm format`       | Formats the codebase with Prettier                           |
+| `pnpm format:check` | Checks formatting without writing changes                    |
+| `pnpm lint`         | Lints the project with ESLint                                |
+| `pnpm knip`         | Checks for unused files, exports, and dependencies with Knip |
+| `pnpm test`         | Runs the Playwright end-to-end test suite                    |
+| `pnpm test:headed`  | Runs the test suite in a headed browser                      |
+| `pnpm test:ui`      | Opens the Playwright UI test runner                          |
+| `pnpm check`        | Runs format check, lint, knip, build, and tests              |
 
-## Project structure
+### Project structure
 
 ```
 index.html                 # App entry HTML
@@ -86,7 +89,7 @@ public/
 tests/                      # Playwright end-to-end tests
 ```
 
-## Adding a new language
+### Adding a new language
 
 Adding a new language means providing a dictionary and a small configuration/translation module, then registering it. As an example, here's how you would add Spanish (`es`):
 
@@ -116,7 +119,7 @@ Adding a new language means providing a dictionary and a small configuration/tra
 6. **Add test coverage.**
    If relevant, extend [tests/language-switch.spec.mjs](tests/language-switch.spec.mjs) to cover the new language, and run the full suite with `pnpm test`.
 
-## Testing
+### Testing
 
 This project uses [Playwright](https://playwright.dev/) for end-to-end tests, located in [tests/](tests/). Playwright drives a real browser against the dev server to verify gameplay, keyboard input, undo behavior, language switching, and more.
 
@@ -126,26 +129,18 @@ pnpm test:headed   # run with a visible browser
 pnpm test:ui       # interactive UI mode for debugging
 ```
 
-CI runs `pnpm run check` (formatting, build, and tests) on every push — see [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
-
-## Contributing
-
-This project was mostly vibe-coded, but contributions are welcome! Whether it's a bug fix, a new feature, a new language, or an improvement to the docs, you're welcome to contribute!
-
-### Reporting bugs / requesting features
-
-Please use [GitHub Issues](https://github.com/tiagojufr/dont-wordle-multi-language/issues) and include:
-
-- Steps to reproduce (for bugs)
-- Expected vs. actual behavior
-- Browser/OS, if relevant
-- Screenshots, if helpful
+CI runs `pnpm run check` (formatting, lint, knip, build, and tests) on every push — see [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
 
 ## Roadmap
 
 Here are the next things I intend to work on:
 
-- :bug: - When the player finds an accented letter in the correct place, it shows the accent of the secret word instead of the correct accentuation for the current word. E.g: secret word is balão, player writes socar and its shows as socãr (which is an invalid word)
+- Statistics - have a statistics view where we could show:
+  - number of games played
+  - number of losses (with a drill down by how many words the player was able to insert before losing)
+  - number of wins
+  - win percentage
+- Word of the day - like most Wordle games, let the user play the word of the day just once per day and keep track of the winning streak
 
 ## License
 

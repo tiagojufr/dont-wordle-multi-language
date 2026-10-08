@@ -9,7 +9,7 @@ test.describe("Help Modal", () => {
     const helpButton = page.locator("#helpButton");
     const helpModal = page.locator("#helpModal");
 
-    await expect(helpModal).not.toBeVisible();
+    await expect(helpModal).toBeHidden();
     await helpButton.click();
 
     await expect(helpModal).toBeVisible();
@@ -51,14 +51,14 @@ test.describe("Help Modal", () => {
     await expect(helpModal).toBeVisible();
 
     await closeButton.click();
-    await expect(helpModal).not.toBeVisible();
+    await expect(helpModal).toBeHidden();
     await expect(helpButton).toBeFocused();
 
     await helpButton.click();
     await expect(helpModal).toBeVisible();
 
     await page.keyboard.press("Escape");
-    await expect(helpModal).not.toBeVisible();
+    await expect(helpModal).toBeHidden();
     await expect(helpButton).toBeFocused();
   });
 });

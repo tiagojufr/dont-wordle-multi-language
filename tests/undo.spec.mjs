@@ -3,10 +3,25 @@ import { gotoWithTarget, mockDictionary, submitWord } from "./helpers.mjs";
 
 test.describe("Undo", () => {
   test("undo can be exhausted after 5 uses", async ({ page }) => {
-    await page.goto("/");
+    // Use a fixed, non-target guess instead of the random-start button: picking
+    // the target itself (a real possibility with a random candidate) ends the
+    // game in a loss and permanently disables undo, making the test flaky.
+    await mockDictionary(page, [
+      "aaaaa",
+      "bbbbb",
+      "ccccc",
+      "ddddd",
+      "eeeee",
+      "fffff",
+      "ggggg",
+      "hhhhh",
+      "iiiii",
+      "jjjjj",
+    ]);
+    await gotoWithTarget(page, "aaaaa");
 
     for (let i = 0; i < 5; i += 1) {
-      await page.locator("#randomStartButton").click();
+      await submitWord(page, "bbbbb");
       await page.locator("#undoButton").click();
     }
 
